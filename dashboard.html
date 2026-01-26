@@ -725,6 +725,74 @@
         </div>
     </div>
 
+    <!-- Edit Product Modal -->
+    <div id="editProductModal" class="modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <button class="modal-close" onclick="closeEditProductModal()">&times;</button>
+
+            <div class="modal-body">
+                <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem;">✏️ Edit Product</h2>
+
+                <form onsubmit="saveEditedProduct(event)">
+                    <!-- Image Preview -->
+                    <div style="margin-bottom: 1.5rem; text-align: center;">
+                        <img id="editProductImagePreview" src="" alt="Product" style="width: 200px; height: 150px; object-fit: cover; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" id="editProductTitle" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="editProductDescription" rows="3" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-family: inherit; resize: vertical;"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Price (USD)</label>
+                            <input type="number" id="editProductPrice" min="0" step="0.01" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select id="editProductStatus" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                                <option value="active">Active</option>
+                                <option value="draft">Draft</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="url" id="editProductImage" placeholder="https://..." style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);" onchange="document.getElementById('editProductImagePreview').src = this.value">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Badge (optional)</label>
+                        <select id="editProductBadge" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                            <option value="">No Badge</option>
+                            <option value="Best Seller">Best Seller</option>
+                            <option value="New">New</option>
+                            <option value="Sale">Sale</option>
+                            <option value="Popular">Popular</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Features (one per line)</label>
+                        <textarea id="editProductFeatures" rows="4" placeholder="Feature 1&#10;Feature 2&#10;Feature 3" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-family: inherit; resize: vertical;"></textarea>
+                    </div>
+
+                    <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+                        <button type="button" class="btn-secondary" style="flex: 1;" onclick="closeEditProductModal()">Cancel</button>
+                        <button type="submit" class="btn-primary" style="flex: 1;">💾 Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="app.js"></script>
     <script>
         // Dashboard-specific functions

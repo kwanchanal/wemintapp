@@ -155,3 +155,183 @@ Ask: "Does this reduce time-to-first-dollar?"
 - Payment success rate by region
 - Average settlement time
 - Creator revenue per bio view
+
+---
+
+## Current Implementation
+
+### Live Demo
+
+🔗 **https://kwanchanal.github.io/wemintapp/**
+
+### Tech Stack
+
+- **Frontend**: Vanilla HTML, CSS, JavaScript
+- **Hosting**: GitHub Pages
+- **Storage**: localStorage (for demo purposes)
+
+---
+
+## Pages & Features
+
+### 1. Bio Page (`index.html`)
+
+The public-facing page that buyers see.
+
+**Components:**
+- Profile header (avatar, name, handle, bio)
+- Social links (Instagram, TikTok, YouTube, etc.)
+- Products grid with badges (Best Seller, New)
+- Quick links section
+- Email signup form
+
+**Checkout Flow:**
+- Product detail modal with features & license info
+- Checkout modal with payment method selection (Card / PromptPay)
+- Success modal with instant download button
+
+### 2. Dashboard (`dashboard.html`)
+
+Creator's main control panel.
+
+**Components:**
+- Stats overview (Revenue, Sales, Views, Conversion Rate)
+- Quick actions (Add Product, Add Link, Preview, Withdraw)
+- Products table with edit/delete actions
+- Recent sales feed
+- Payout balance with withdrawal option
+- Live phone preview of bio page
+
+### 3. Appearance (`appearance.html`)
+
+Customize the look and feel of the bio page.
+
+**Features:**
+- **Themes**: 6 pre-built themes
+  - Purple Gradient (default)
+  - Ocean Blue
+  - Fresh Green
+  - Pink Sunset
+  - Dark Mode
+  - Light Mode
+- **Primary Color**: 10 preset colors + custom hex input
+- **Button Style**: Rounded, Pill, Square
+- **Font**: Inter, Poppins, Roboto, Playfair Display
+
+### 4. Settings (`settings.html`)
+
+Manage profile and social links.
+
+**Profile Settings:**
+- Display name
+- Username (changes URL: `/@username`)
+- Profile avatar (upload or remove)
+- Bio (160 character limit)
+
+**Social Links:**
+- Toggle visibility for each platform
+- Custom URL input for each
+- Supported platforms:
+  - Instagram
+  - TikTok
+  - YouTube
+  - X (Twitter)
+  - Facebook
+  - LinkedIn
+  - Website
+  - Email
+
+---
+
+## File Structure
+
+```
+wemintapp/
+├── index.html          # Bio page (public)
+├── dashboard.html      # Creator dashboard
+├── appearance.html     # Theme & styling settings
+├── settings.html       # Profile & social settings
+├── styles.css          # Global styles
+├── app.js              # JavaScript functionality
+├── AGENTS.MD           # This file
+└── reference/          # UI reference screenshots
+```
+
+---
+
+## Data Storage
+
+Settings are stored in `localStorage`:
+
+| Key | Description |
+|-----|-------------|
+| `wemint_profile` | Display name, username, bio, avatar, social links |
+| `wemint_appearance` | Theme, primary color, button style, font |
+
+---
+
+## Design System
+
+### Colors
+
+| Variable | Default | Usage |
+|----------|---------|-------|
+| `--primary` | `#6366f1` | Buttons, links, accents |
+| `--primary-dark` | `#4f46e5` | Hover states |
+| `--accent` | `#10b981` | Success, positive actions |
+| `--bg-primary` | `#f8fafc` | Page background |
+| `--bg-secondary` | `#ffffff` | Cards, modals |
+| `--text-primary` | `#0f172a` | Headings |
+| `--text-secondary` | `#475569` | Body text |
+
+### Typography
+
+- **Font**: Inter (Google Fonts)
+- **Weights**: 400, 500, 600, 700
+
+### Components
+
+- Cards with subtle shadows
+- Apple-style minimal scrollbars
+- Phone mockup preview
+- Toggle switches for settings
+- Modal system for checkout flow
+
+---
+
+## Roadmap / TODO
+
+### Phase 1 - MVP ✅
+- [x] Bio page with products
+- [x] Checkout flow (demo)
+- [x] Dashboard with stats
+- [x] Appearance customization
+- [x] Profile settings
+- [x] Social links management
+- [x] Live preview
+
+### Phase 2 - Backend Integration
+- [ ] User authentication
+- [ ] Database for products/orders
+- [ ] Real payment processing (Stripe/Omise)
+- [ ] File upload for digital products
+- [ ] Email notifications
+
+### Phase 3 - Advanced Features
+- [ ] Analytics dashboard
+- [ ] Multiple product types (courses, memberships)
+- [ ] Custom domains
+- [ ] Affiliate/referral system
+- [ ] API for integrations
+
+---
+
+## References
+
+UI/UX inspiration from:
+- Beacons.ai
+- Linktree
+- Stan Store
+- Gumroad
+
+Screenshots available in `/reference` folder.

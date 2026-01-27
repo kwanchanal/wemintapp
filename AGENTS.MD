@@ -180,9 +180,10 @@ The public-facing page that buyers see.
 
 **Components:**
 - Profile header (avatar, name, handle, bio)
-- Social links (Instagram, TikTok, YouTube, etc.)
+- Social links (from creator settings)
+- Affiliate links grid with platform badge + Shop Now CTA
 - Products grid with badges (Best Seller, New)
-- Quick links section
+- Quick links section (from creator settings)
 - Email signup form
 
 **Checkout Flow:**
@@ -190,19 +191,25 @@ The public-facing page that buyers see.
 - Checkout modal with payment method selection (Card / PromptPay)
 - Success modal with instant download button
 
-### 2. Dashboard (`dashboard.html`)
+### 2. Dashboard (`dashboard.html`) — One‑Page Control Center
 
 Creator's main control panel.
 
 **Components:**
 - Stats overview (Revenue, Sales, Views, Conversion Rate)
-- Quick actions (Add Product, Add Link, Preview, Withdraw)
+- Quick actions (Add Affiliate Link, Add Product, Add Quick Link, Payment)
+- Appearance settings (Theme, Button Color, Font Color, Button Style, Font)
+- Profile settings (avatar, name, username, bio)
+- Social links (icon row + add/edit modal)
+- Section visibility toggles (Affiliate / Products / Quick Links)
+- Affiliate links table (demo data)
 - Products table with edit/delete actions
+- Quick links table with add/edit/toggle
 - Recent sales feed
-- Payout balance with withdrawal option
+- Payment details (customers pay creator directly; no platform-held payouts)
 - Live phone preview of bio page
 
-### 3. Appearance (`appearance.html`)
+### 3. Appearance (`appearance.html`) [Legacy/Standalone]
 
 Customize the look and feel of the bio page.
 
@@ -214,11 +221,11 @@ Customize the look and feel of the bio page.
   - Pink Sunset
   - Dark Mode
   - Light Mode
-- **Primary Color**: 10 preset colors + custom hex input
+- **Primary Color**: preset colors + custom hex input
 - **Button Style**: Rounded, Pill, Square
 - **Font**: Inter, Poppins, Roboto, Playfair Display
 
-### 4. Settings (`settings.html`)
+### 4. Settings (`settings.html`) [Legacy/Standalone]
 
 Manage profile and social links.
 
@@ -249,8 +256,8 @@ Manage profile and social links.
 wemintapp/
 ├── index.html          # Bio page (public)
 ├── dashboard.html      # Creator dashboard
-├── appearance.html     # Theme & styling settings
-├── settings.html       # Profile & social settings
+├── appearance.html     # Legacy standalone appearance page
+├── settings.html       # Legacy standalone settings page
 ├── styles.css          # Global styles
 ├── app.js              # JavaScript functionality
 ├── AGENTS.MD           # This file
@@ -266,7 +273,10 @@ Settings are stored in `localStorage`:
 | Key | Description |
 |-----|-------------|
 | `wemint_profile` | Display name, username, bio, avatar, social links |
-| `wemint_appearance` | Theme, primary color, button style, font |
+| `wemint_appearance` | Theme, button color, button style, font, font color |
+| `wemint_products` | Products data for dashboard + bio page |
+| `wemint_quick_links` | Quick links data |
+| `wemint_sections` | Section visibility toggles for bio page |
 
 ---
 

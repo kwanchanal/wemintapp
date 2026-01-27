@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             background: var(--bg-primary);
@@ -213,6 +213,154 @@
             background: var(--border-color);
         }
 
+        /* Cute Gumroad-ish polish */
+        body {
+            background: #f7f3ee;
+            font-family: "Poppins", "Inter", system-ui, sans-serif;
+        }
+
+        .dashboard-layout {
+            background: transparent;
+        }
+
+        .sidebar {
+            background: #111111;
+            border-right: 1px solid #1f1f1f;
+            color: #ffffff;
+        }
+
+        .nav-item {
+            color: #e5e7eb;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+        }
+
+        .nav-item.active {
+            background: #ffd7f3;
+            color: #1f1f1f;
+            border: 1px solid #f5b7e6;
+        }
+
+        .sidebar-logo {
+            color: #ffffff;
+        }
+
+        .page-title {
+            font-size: 1.6rem;
+            letter-spacing: -0.01em;
+        }
+
+        .stat-card {
+            background: #ffffff;
+            border: 2px solid #111111;
+            box-shadow: none;
+            border-radius: 14px;
+        }
+
+        .dashboard-card {
+            background: #ffffff;
+            border: 2px solid #111111;
+            border-radius: 14px;
+            box-shadow: none;
+            overflow: hidden;
+        }
+
+        .card-header {
+            border-bottom: 2px solid #111111;
+            background: #fff7e8;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .card-title {
+            font-size: 0.95rem;
+            letter-spacing: 0;
+        }
+
+        .btn-primary {
+            background: #ff9be7;
+            color: #111111;
+            box-shadow: none;
+            border-radius: 10px;
+            border: 2px solid #111111;
+        }
+
+        .btn-primary:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background: #ffffff;
+            border: 2px solid #111111;
+            border-radius: 10px;
+            box-shadow: none;
+        }
+
+        .quick-action-card {
+            background: #ffffff;
+            border: 2px solid #111111;
+            border-radius: 12px;
+            box-shadow: none;
+        }
+
+        .quick-action-card.primary {
+            background: #fff3b0;
+        }
+
+        .qa-icon {
+            font-size: 1.1rem;
+        }
+
+        .section-toggle-item {
+            background: #ffffff;
+            border: 2px solid #111111;
+            border-radius: 12px;
+        }
+
+        .products-table th {
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+        }
+
+        .products-table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .products-table tbody tr {
+            background: #ffffff;
+        }
+
+        .products-table tbody tr:hover {
+            background: #fff7e8;
+        }
+
+        .table-actions .btn-icon {
+            border-radius: 10px;
+            border: 1.5px solid #111111;
+        }
+
+        .social-icon-pill {
+            background: #ffffff;
+            border: 2px solid #111111;
+            box-shadow: none;
+        }
+
+        .appearance-block {
+            background: #ffffff;
+            border: 2px solid #111111;
+            border-radius: 14px;
+            padding: 0.9rem;
+        }
+
+        .appearance-block + .appearance-block {
+            margin-top: 1rem;
+        }
+
         .section-toggle-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -281,6 +429,41 @@
             transform: translateX(20px);
         }
 
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .quick-action-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 0.9rem 1rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .quick-action-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(99, 102, 241, 0.35);
+        }
+
+        .quick-action-card .qa-icon {
+            font-size: 1.25rem;
+        }
+
+        .quick-action-card.primary {
+            background: rgba(99, 102, 241, 0.08);
+        }
+
         /* Responsive - hide preview on smaller screens */
         @media (max-width: 1100px) {
             .main-content {
@@ -302,54 +485,35 @@
             </div>
 
             <nav class="sidebar-nav">
-                <a href="dashboard.html" class="nav-item active">
+                <a href="#dashboard" class="nav-item active" onclick="document.querySelector('.page-header').scrollIntoView({behavior: 'smooth'}); return false;">
                     <span class="icon">📊</span>
                     <span>Dashboard</span>
+                </a>
+                <a href="#appearance" class="nav-item" onclick="document.getElementById('appearanceSection').scrollIntoView({behavior: 'smooth'}); return false;">
+                    <span class="icon">🎨</span>
+                    <span>Appearance</span>
+                </a>
+                <a href="#settings" class="nav-item" onclick="document.getElementById('profileSettingsSection').scrollIntoView({behavior: 'smooth'}); return false;">
+                    <span class="icon">⚙️</span>
+                    <span>Profile</span>
                 </a>
                 <a href="#affiliate-links" class="nav-item" onclick="document.getElementById('affiliateLinksSection').scrollIntoView({behavior: 'smooth'}); return false;">
                     <span class="icon">🛒</span>
                     <span>Affiliate Links</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#products" class="nav-item" onclick="document.getElementById('productsTable').scrollIntoView({behavior: 'smooth'}); return false;">
                     <span class="icon">🛍️</span>
                     <span>Products</span>
                 </a>
-                <a href="#" class="nav-item">
-                    <span class="icon">💰</span>
-                    <span>Sales</span>
-                </a>
-                <a href="#" class="nav-item">
+                <a href="#quick-links" class="nav-item" onclick="document.getElementById('quickLinksSection').scrollIntoView({behavior: 'smooth'}); return false;">
                     <span class="icon">🔗</span>
-                    <span>Links</span>
+                    <span>Quick Links</span>
                 </a>
-                <a href="#" class="nav-item">
-                    <span class="icon">👤</span>
-                    <span>Customers</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="icon">📈</span>
-                    <span>Analytics</span>
-                </a>
-                <a href="#" class="nav-item">
+                <a href="#payments" class="nav-item" onclick="document.getElementById('paymentDetailsSection').scrollIntoView({behavior: 'smooth'}); return false;">
                     <span class="icon">💳</span>
-                    <span>Payouts</span>
-                </a>
-                <a href="appearance.html" class="nav-item">
-                    <span class="icon">🎨</span>
-                    <span>Appearance</span>
-                </a>
-                <a href="settings.html" class="nav-item">
-                    <span class="icon">⚙️</span>
-                    <span>Settings</span>
+                    <span>Payments</span>
                 </a>
             </nav>
-
-            <div style="margin-top: auto; padding-top: 2rem;">
-                <a href="index.html" class="nav-item" target="_blank">
-                    <span class="icon">👁️</span>
-                    <span>View Bio Page</span>
-                </a>
-            </div>
         </aside>
 
         <!-- Main Content -->
@@ -394,58 +558,309 @@
                     <h2 class="card-title">Quick Actions</h2>
                 </div>
                 <div class="card-body">
-                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <button class="btn-primary" onclick="openAddAffiliateModal()">
-                            ➕ Add Affiliate Link
+                    <div class="quick-actions-grid">
+                        <button class="quick-action-card primary" onclick="openAddAffiliateModal()">
+                            <span>➕ Add Affiliate Link</span>
+                            <span class="qa-icon">🛒</span>
                         </button>
-                        <button class="btn-primary" onclick="openAddProductModal()">
-                            ➕ Add Product
+                        <button class="quick-action-card primary" onclick="openAddProductModal()">
+                            <span>➕ Add Product</span>
+                            <span class="qa-icon">🛍️</span>
                         </button>
-                        <button class="btn-secondary" onclick="openAddLinkModal()">
-                            🔗 Add Link
+                        <button class="quick-action-card" onclick="openAddLinkModal()">
+                            <span>➕ Add Quick Link</span>
+                            <span class="qa-icon">🔗</span>
                         </button>
-                        <button class="btn-secondary" onclick="window.open('index.html', '_blank')">
-                            👁️ Preview Bio
-                        </button>
-                        <button class="btn-secondary" onclick="openWithdrawModal()">
-                            💳 Withdraw
+                        <button class="quick-action-card" onclick="openPaymentModal()">
+                            <span>💳 Payment</span>
+                            <span class="qa-icon">→</span>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Section Visibility -->
-            <div class="dashboard-card">
+            <!-- Appearance Settings -->
+            <div class="dashboard-card" id="appearanceSection">
                 <div class="card-header">
                     <div>
-                        <h2 class="card-title">Section Visibility</h2>
-                        <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.25rem;">Show or hide sections in your bio preview</p>
+                        <h2 class="card-title">Appearance</h2>
+                        <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.25rem;">Customize how your bio page looks</p>
                     </div>
+                    <button class="btn-primary" onclick="saveAppearanceSettings()">
+                        💾 Save Appearance
+                    </button>
                 </div>
                 <div class="card-body">
-                    <div class="section-toggle-list">
-                        <div class="section-toggle-item">
-                            <span class="section-toggle-label">👏🏻 Affiliate Links</span>
-                            <label class="toggle-switch">
-                                <input type="checkbox" id="toggleAffiliate" onchange="toggleSectionVisibility('affiliate', this)">
-                                <span class="toggle-slider"></span>
-                            </label>
-                        </div>
-                        <div class="section-toggle-item">
-                            <span class="section-toggle-label">🛍️ Products</span>
-                            <label class="toggle-switch">
-                                <input type="checkbox" id="toggleProducts" onchange="toggleSectionVisibility('products', this)">
-                                <span class="toggle-slider"></span>
-                            </label>
-                        </div>
-                        <div class="section-toggle-item">
-                            <span class="section-toggle-label">🔗 Quick Links</span>
-                            <label class="toggle-switch">
-                                <input type="checkbox" id="toggleLinks" onchange="toggleSectionVisibility('links', this)">
-                                <span class="toggle-slider"></span>
-                            </label>
+                    <div class="appearance-block">
+                        <h3 class="block-title">Theme</h3>
+                        <div class="theme-grid">
+                            <div class="theme-option selected" data-theme="purple-gradient" onclick="selectAppearanceTheme(this)">
+                                <div class="theme-preview" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-avatar"></div>
+                                        <div class="theme-preview-lines"></div>
+                                        <div class="theme-preview-lines"></div>
+                                    </div>
+                                </div>
+                                <div class="theme-name">Purple Gradient</div>
+                            </div>
+
+                            <div class="theme-option" data-theme="blue-gradient" onclick="selectAppearanceTheme(this)">
+                                <div class="theme-preview" style="background: linear-gradient(135deg, #667eea 0%, #00d4ff 100%);">
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-avatar"></div>
+                                        <div class="theme-preview-lines"></div>
+                                        <div class="theme-preview-lines"></div>
+                                    </div>
+                                </div>
+                                <div class="theme-name">Ocean Blue</div>
+                            </div>
+
+                            <div class="theme-option" data-theme="green-gradient" onclick="selectAppearanceTheme(this)">
+                                <div class="theme-preview" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-avatar"></div>
+                                        <div class="theme-preview-lines"></div>
+                                        <div class="theme-preview-lines"></div>
+                                    </div>
+                                </div>
+                                <div class="theme-name">Fresh Green</div>
+                            </div>
+
+                            <div class="theme-option" data-theme="orange-gradient" onclick="selectAppearanceTheme(this)">
+                                <div class="theme-preview" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-avatar"></div>
+                                        <div class="theme-preview-lines"></div>
+                                        <div class="theme-preview-lines"></div>
+                                    </div>
+                                </div>
+                                <div class="theme-name">Pink Sunset</div>
+                            </div>
+
+                            <div class="theme-option" data-theme="dark" onclick="selectAppearanceTheme(this)">
+                                <div class="theme-preview" style="background: linear-gradient(135deg, #232526 0%, #414345 100%);">
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-avatar"></div>
+                                        <div class="theme-preview-lines"></div>
+                                        <div class="theme-preview-lines"></div>
+                                    </div>
+                                </div>
+                                <div class="theme-name">Dark Mode</div>
+                            </div>
+
+                            <div class="theme-option" data-theme="light" onclick="selectAppearanceTheme(this)">
+                                <div class="theme-preview" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+                                    <div class="theme-preview-content" style="background: rgba(0,0,0,0.05);">
+                                        <div class="theme-preview-avatar" style="background: rgba(0,0,0,0.2);"></div>
+                                        <div class="theme-preview-lines" style="background: rgba(0,0,0,0.1);"></div>
+                                        <div class="theme-preview-lines" style="background: rgba(0,0,0,0.1);"></div>
+                                    </div>
+                                </div>
+                                <div class="theme-name">Light Mode</div>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="appearance-block">
+                        <div class="appearance-split">
+                            <div>
+                                <h3 class="block-title">Colors</h3>
+                                <div class="color-panel">
+                                    <div class="color-panel-header">
+                                        <span>Button Color</span>
+                                        <div class="custom-color-input compact">
+                                            <input type="color" id="customColor" value="#6366f1" onchange="setAppearanceCustomColor(this.value)">
+                                            <input type="text" id="customColorHex" placeholder="#6366f1" value="#6366f1" onchange="setAppearanceCustomColor(this.value)">
+                                        </div>
+                                    </div>
+                                    <div class="color-options" id="buttonColorOptions">
+                                        <div class="color-option selected" style="background: #6366f1;" data-color="#6366f1" onclick="selectAppearanceColor(this)"></div>
+                                        <div class="color-option" style="background: #4f46e5;" data-color="#4f46e5" onclick="selectAppearanceColor(this)"></div>
+                                        <div class="color-option" style="background: #8b5cf6;" data-color="#8b5cf6" onclick="selectAppearanceColor(this)"></div>
+                                        <div class="color-option" style="background: #ec4899;" data-color="#ec4899" onclick="selectAppearanceColor(this)"></div>
+                                        <div class="color-option" style="background: #f97316;" data-color="#f97316" onclick="selectAppearanceColor(this)"></div>
+                                        <div class="color-option" style="background: #eab308;" data-color="#eab308" onclick="selectAppearanceColor(this)"></div>
+                                        <div class="color-option" style="background: #22c55e;" data-color="#22c55e" onclick="selectAppearanceColor(this)"></div>
+                                        <div class="color-option" style="background: #14b8a6;" data-color="#14b8a6" onclick="selectAppearanceColor(this)"></div>
+                                        <div class="color-option" style="background: #06b6d4;" data-color="#06b6d4" onclick="selectAppearanceColor(this)"></div>
+                                        <div class="color-option" style="background: #3b82f6;" data-color="#3b82f6" onclick="selectAppearanceColor(this)"></div>
+                                        <div class="color-option" style="background: #ef4444;" data-color="#ef4444" onclick="selectAppearanceColor(this)"></div>
+                                        <div class="color-option" style="background: #0f172a;" data-color="#0f172a" onclick="selectAppearanceColor(this)"></div>
+                                        <div class="color-option" style="background: #ffffff; border-color: #e2e8f0;" data-color="#ffffff" onclick="selectAppearanceColor(this)"></div>
+                                        <div class="color-option" style="background: #94a3b8;" data-color="#94a3b8" onclick="selectAppearanceColor(this)"></div>
+                                    </div>
+                                </div>
+
+                                <div class="color-panel">
+                                    <div class="color-panel-header">
+                                        <span>Font Color</span>
+                                        <div class="custom-color-input compact">
+                                            <input type="color" id="bioColor" value="#ffffff" onchange="setAppearanceBioColor(this.value)">
+                                            <input type="text" id="bioColorHex" placeholder="#ffffff" value="#ffffff" onchange="setAppearanceBioColor(this.value)">
+                                        </div>
+                                    </div>
+                                    <div class="color-options compact" id="bioColorOptions">
+                                        <div class="color-option selected" style="background: #6366f1;" data-color="#6366f1" onclick="selectAppearanceBioColor(this)"></div>
+                                        <div class="color-option" style="background: #4f46e5;" data-color="#4f46e5" onclick="selectAppearanceBioColor(this)"></div>
+                                        <div class="color-option" style="background: #8b5cf6;" data-color="#8b5cf6" onclick="selectAppearanceBioColor(this)"></div>
+                                        <div class="color-option" style="background: #ec4899;" data-color="#ec4899" onclick="selectAppearanceBioColor(this)"></div>
+                                        <div class="color-option" style="background: #f97316;" data-color="#f97316" onclick="selectAppearanceBioColor(this)"></div>
+                                        <div class="color-option" style="background: #eab308;" data-color="#eab308" onclick="selectAppearanceBioColor(this)"></div>
+                                        <div class="color-option" style="background: #22c55e;" data-color="#22c55e" onclick="selectAppearanceBioColor(this)"></div>
+                                        <div class="color-option" style="background: #14b8a6;" data-color="#14b8a6" onclick="selectAppearanceBioColor(this)"></div>
+                                        <div class="color-option" style="background: #06b6d4;" data-color="#06b6d4" onclick="selectAppearanceBioColor(this)"></div>
+                                        <div class="color-option" style="background: #3b82f6;" data-color="#3b82f6" onclick="selectAppearanceBioColor(this)"></div>
+                                        <div class="color-option" style="background: #ef4444;" data-color="#ef4444" onclick="selectAppearanceBioColor(this)"></div>
+                                        <div class="color-option" style="background: #0f172a;" data-color="#0f172a" onclick="selectAppearanceBioColor(this)"></div>
+                                        <div class="color-option" style="background: #ffffff; border-color: #e2e8f0;" data-color="#ffffff" onclick="selectAppearanceBioColor(this)"></div>
+                                        <div class="color-option" style="background: #94a3b8;" data-color="#94a3b8" onclick="selectAppearanceBioColor(this)"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="block-title">Buttons & Fonts</h3>
+                                <div class="button-style-grid">
+                                    <div class="button-style-option selected" data-style="rounded" onclick="selectAppearanceButtonStyle(this)">
+                                        <div class="button-style-preview rounded">
+                                            <span></span>
+                                        </div>
+                                        <div class="button-style-name">Rounded</div>
+                                    </div>
+                                    <div class="button-style-option" data-style="pill" onclick="selectAppearanceButtonStyle(this)">
+                                        <div class="button-style-preview pill">
+                                            <span></span>
+                                        </div>
+                                        <div class="button-style-name">Pill</div>
+                                    </div>
+                                    <div class="button-style-option" data-style="square" onclick="selectAppearanceButtonStyle(this)">
+                                        <div class="button-style-preview square">
+                                            <span></span>
+                                        </div>
+                                        <div class="button-style-name">Square</div>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 0.75rem;">
+                                    <div class="font-compact-grid">
+                                        <label class="font-option selected" data-font="Inter" onclick="selectAppearanceFont(this)">
+                                            <input type="radio" name="font" checked>
+                                            <span class="font-sample" style="font-family: Inter, sans-serif;">Aa</span>
+                                            <span class="font-name">Inter</span>
+                                        </label>
+                                        <label class="font-option" data-font="Poppins" onclick="selectAppearanceFont(this)">
+                                            <input type="radio" name="font">
+                                            <span class="font-sample" style="font-family: Poppins, sans-serif;">Aa</span>
+                                            <span class="font-name">Poppins</span>
+                                        </label>
+                                        <label class="font-option" data-font="Roboto" onclick="selectAppearanceFont(this)">
+                                            <input type="radio" name="font">
+                                            <span class="font-sample" style="font-family: Roboto, sans-serif;">Aa</span>
+                                            <span class="font-name">Roboto</span>
+                                        </label>
+                                        <label class="font-option" data-font="Playfair Display" onclick="selectAppearanceFont(this)">
+                                            <input type="radio" name="font">
+                                            <span class="font-sample" style="font-family: 'Playfair Display', serif;">Aa</span>
+                                            <span class="font-name">Playfair Display</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="appearance-block">
+                        <h3 class="block-title">Section Visibility</h3>
+                        <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 0.75rem;">Show or hide sections in your bio preview</p>
+                        <div class="section-toggle-list">
+                            <div class="section-toggle-item">
+                                <span class="section-toggle-label">🛒 Affiliate Links</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="toggleAffiliate" onchange="toggleSectionVisibility('affiliate', this)">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="section-toggle-item">
+                                <span class="section-toggle-label">🛍️ Products</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="toggleProducts" onchange="toggleSectionVisibility('products', this)">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="section-toggle-item">
+                                <span class="section-toggle-label">🔗 Quick Links</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="toggleLinks" onchange="toggleSectionVisibility('links', this)">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Settings -->
+            <div class="dashboard-card" id="profileSettingsSection">
+                <div class="card-header">
+                    <div>
+                        <h2 class="card-title">Profile Settings</h2>
+                        <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.25rem;">Update your identity and bio</p>
+                    </div>
+                    <button class="btn-primary" onclick="saveProfileSettings()">
+                        💾 Save Profile
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="profile-upload">
+                        <div class="profile-avatar-preview">
+                            <img id="avatarPreview" src="https://api.dicebear.com/7.x/avataaars/svg?seed=creative" alt="Profile">
+                        </div>
+                        <div class="profile-upload-actions">
+                            <button class="btn-upload" onclick="document.getElementById('avatarInput').click()">
+                                📷 Upload Photo
+                            </button>
+                            <button class="btn-remove" onclick="removeAvatar()">
+                                🗑️ Remove
+                            </button>
+                            <input type="file" id="avatarInput" accept="image/*" style="display: none;" onchange="handleAvatarUpload(event)">
+                        </div>
+                        <div class="profile-social-inline">
+                            <div class="profile-social-title">Social Links</div>
+                            <div class="social-icon-row" id="socialLinksRow"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label style="display: block; font-size: 0.875rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">
+                            Display Name
+                        </label>
+                        <input type="text" id="displayName" class="form-input" value="Creative Studio" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 0.9375rem;" onchange="updateProfilePreview()">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label style="display: block; font-size: 0.875rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">
+                            Username
+                        </label>
+                        <div class="username-input-group">
+                            <span class="username-prefix">wemint.app/@</span>
+                            <input type="text" id="username" value="creativestudio" onchange="updateUsername()">
+                        </div>
+                        <p class="url-preview">
+                            Your page URL: <a href="#" id="urlPreview">wemint.app/@creativestudio</a>
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="display: block; font-size: 0.875rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">
+                            Bio
+                        </label>
+                        <textarea id="bio" class="bio-textarea" maxlength="160" oninput="updateCharCount()" onchange="updateProfilePreview()">Digital creator & designer. Sharing templates, presets, and design resources.</textarea>
+                        <p class="char-count"><span id="charCount">80</span>/160</p>
+                    </div>
+
+                    <p style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 1rem;">
+                        Add social icons that appear on your bio page
+                    </p>
                 </div>
             </div>
 
@@ -731,30 +1146,26 @@
                 </div>
             </div>
 
-            <!-- Payout Info -->
-                <div class="dashboard-card">
+            <!-- Payment Details -->
+                <div class="dashboard-card" id="paymentDetailsSection">
                     <div class="card-header">
-                        <h2 class="card-title">Payout Balance</h2>
+                        <h2 class="card-title">Payment Details</h2>
                     </div>
                     <div class="card-body">
                         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
                             <div>
-                                <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 0.25rem;">Available for withdrawal</p>
-                                <p style="font-size: 2rem; font-weight: 700; color: var(--text-primary);">$1,847.00</p>
+                                <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 0.25rem;">Receive payments directly to your account</p>
+                                <p style="font-size: 1rem; font-weight: 600; color: var(--text-primary);">No money held by wemint</p>
                             </div>
                             <div style="display: flex; gap: 0.75rem;">
-                                <button class="btn-secondary">
-                                    📋 Transaction History
-                                </button>
-                                <button class="btn-primary" onclick="openWithdrawModal()">
-                                    💳 Withdraw
+                                <button class="btn-primary" onclick="openPaymentModal()">
+                                    ➕ Add Payment Method
                                 </button>
                             </div>
                         </div>
                         <div style="margin-top: 1rem; padding: 1rem; background: var(--bg-tertiary); border-radius: var(--radius-md);">
                             <p style="font-size: 0.8125rem; color: var(--text-secondary);">
-                                💡 <strong>Tip:</strong> Set up automatic payouts to receive funds every week.
-                                <a href="#" style="color: var(--primary);">Configure now →</a>
+                                💡 <strong>Tip:</strong> Choose how customers pay you: bank details or crypto wallet.
                             </p>
                         </div>
                     </div>
@@ -788,7 +1199,7 @@
                     <!-- Phone Mockup -->
                     <div class="phone-preview-container">
                         <div class="phone-mockup">
-                            <div class="phone-inner">
+                            <div class="phone-inner" id="previewBackground">
                                 <div class="phone-notch"></div>
                                 <iframe src="index.html" class="phone-iframe" id="previewIframe"></iframe>
                             </div>
@@ -911,62 +1322,45 @@
         </div>
     </div>
 
-    <!-- Withdraw Modal -->
-    <div id="withdrawModal" class="modal">
-        <div class="modal-content" style="max-width: 420px;">
-            <button class="modal-close" onclick="closeWithdrawModal()">&times;</button>
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content" style="max-width: 520px;">
+            <button class="modal-close" onclick="closePaymentModal()">&times;</button>
 
             <div class="modal-body">
-                <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Withdraw Funds</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Available balance: <strong>$1,847.00</strong></p>
+                <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Add Payment Details</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">wemint does not hold funds — customers pay you directly.</p>
 
-                <form onsubmit="handleWithdraw(event)">
+                <form onsubmit="handlePaymentSave(event)">
                     <div class="form-group">
-                        <label>Amount (USD)</label>
-                        <input type="number" placeholder="1847.00" min="10" max="1847" step="0.01" required>
-                        <p class="form-hint">Minimum withdrawal: $10</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Withdraw to</label>
+                        <label>Payment Method</label>
                         <div class="payment-methods" style="flex-direction: column;">
                             <label class="payment-option selected">
-                                <input type="radio" name="withdrawMethod" value="bank" checked>
-                                <span>🏦 Bank Account (****1234)</span>
+                                <input type="radio" name="paymentMethod" value="bank" checked>
+                                <span>🏦 Bank Details</span>
                             </label>
                             <label class="payment-option">
-                                <input type="radio" name="withdrawMethod" value="paypal">
-                                <span>💳 PayPal (email@example.com)</span>
-                            </label>
-                            <label class="payment-option">
-                                <input type="radio" name="withdrawMethod" value="crypto">
+                                <input type="radio" name="paymentMethod" value="crypto">
                                 <span>₿ Crypto Wallet</span>
                             </label>
                         </div>
                     </div>
 
-                    <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: var(--radius-md); margin: 1rem 0;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                            <span style="color: var(--text-secondary);">Amount</span>
-                            <span>$1,847.00</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                            <span style="color: var(--text-secondary);">Fee (2%)</span>
-                            <span>-$36.94</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; font-weight: 700; padding-top: 0.5rem; border-top: 1px solid var(--border-color);">
-                            <span>You'll receive</span>
-                            <span style="color: var(--accent);">$1,810.06</span>
-                        </div>
+                    <div class="form-group">
+                        <label>Account / Wallet Name</label>
+                        <input type="text" id="paymentName" placeholder="e.g., Creative Studio" required>
                     </div>
 
-                    <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1rem;">
-                        ⏱️ Estimated arrival: 1-3 business days
-                    </p>
+                    <div class="form-group">
+                        <label>Bank Account / Wallet Address</label>
+                        <input type="text" id="paymentDetails" placeholder="e.g., Bank account or wallet address" required>
+                        <p class="form-hint">This will be shown on your bio page checkout.</p>
+                    </div>
 
-                    <button type="submit" class="btn-primary" style="width: 100%;">
-                        Withdraw $1,810.06
-                    </button>
+                    <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+                        <button type="button" class="btn-secondary" style="flex: 1;" onclick="closePaymentModal()">Cancel</button>
+                        <button type="submit" class="btn-primary" style="flex: 1;">Save Payment Details</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -1130,7 +1524,7 @@
             <button class="modal-close" onclick="closeAddAffiliateModal()">&times;</button>
 
             <div class="modal-body">
-                <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem;">👏🏻 Add Affiliate Link</h2>
+                <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem;">🛒 Add Affiliate Link</h2>
 
                 <form onsubmit="handleAddAffiliate(event)">
                     <div class="form-group">
@@ -1251,8 +1645,486 @@
         </div>
     </div>
 
+    <!-- Social Link Modal -->
+    <div id="socialLinkModal" class="modal">
+        <div class="modal-content" style="max-width: 520px;">
+            <button class="modal-close" onclick="closeSocialLinkModal()">&times;</button>
+
+            <div class="modal-body">
+                <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem;">Add Social Icon</h2>
+
+                <form onsubmit="saveSocialLink(event)">
+                    <div class="form-group">
+                        <label>Platform</label>
+                        <select id="socialPlatformSelect" onchange="handleSocialPlatformChange(this.value)" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                            <option value="instagram">Instagram</option>
+                            <option value="tiktok">TikTok</option>
+                            <option value="youtube">YouTube</option>
+                            <option value="twitter">X (Twitter)</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="linkedin">LinkedIn</option>
+                            <option value="website">Website</option>
+                            <option value="email">Email</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Link URL</label>
+                        <input type="text" id="socialUrlInput" placeholder="https://..." required>
+                        <p class="form-hint">Use a full URL (or email for Email).</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-field">
+                            <input type="checkbox" id="socialEnabledToggle" checked>
+                            <span>Show on bio page</span>
+                        </label>
+                    </div>
+
+                    <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+                        <button type="button" class="btn-secondary" style="flex: 1;" onclick="closeSocialLinkModal()">Cancel</button>
+                        <button type="submit" class="btn-primary" style="flex: 1;">Save Social Link</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="app.js"></script>
     <script>
+        // ========================================
+        // Appearance Settings
+        // ========================================
+
+        let appearanceSettings = {
+            theme: 'purple-gradient',
+            primaryColor: '#6366f1',
+            buttonStyle: 'rounded',
+            font: 'Inter',
+            bioColor: '#ffffff'
+        };
+
+        const appearanceThemeBackgrounds = {
+            'purple-gradient': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            'blue-gradient': 'linear-gradient(135deg, #667eea 0%, #00d4ff 100%)',
+            'green-gradient': 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
+            'orange-gradient': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+            'dark': 'linear-gradient(135deg, #232526 0%, #414345 100%)',
+            'light': '#f8fafc'
+        };
+
+        function loadAppearanceSettings() {
+            const saved = localStorage.getItem('wemint_appearance');
+            if (saved) {
+                appearanceSettings = JSON.parse(saved);
+            }
+            applyAppearanceSettingsToUI();
+        }
+
+        function applyAppearanceSettingsToUI() {
+            document.querySelectorAll('.theme-option').forEach(el => {
+                el.classList.toggle('selected', el.dataset.theme === appearanceSettings.theme);
+            });
+
+            document.querySelectorAll('#buttonColorOptions .color-option').forEach(el => {
+                el.classList.toggle('selected', el.dataset.color === appearanceSettings.primaryColor);
+            });
+
+            const colorInput = document.getElementById('customColor');
+            const colorHex = document.getElementById('customColorHex');
+            if (colorInput) colorInput.value = appearanceSettings.primaryColor;
+            if (colorHex) colorHex.value = appearanceSettings.primaryColor;
+
+            document.querySelectorAll('.button-style-option').forEach(el => {
+                el.classList.toggle('selected', el.dataset.style === appearanceSettings.buttonStyle);
+            });
+
+            document.querySelectorAll('.font-option').forEach(el => {
+                el.classList.toggle('selected', el.dataset.font === appearanceSettings.font);
+            });
+
+            document.querySelectorAll('#bioColorOptions .color-option').forEach(el => {
+                el.classList.toggle('selected', el.dataset.color === appearanceSettings.bioColor);
+            });
+
+            const bioColorInput = document.getElementById('bioColor');
+            const bioColorHex = document.getElementById('bioColorHex');
+            if (bioColorInput) bioColorInput.value = appearanceSettings.bioColor;
+            if (bioColorHex) bioColorHex.value = appearanceSettings.bioColor;
+
+            updateAppearancePreview();
+        }
+
+        function selectAppearanceTheme(element) {
+            document.querySelectorAll('.theme-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            appearanceSettings.theme = element.dataset.theme;
+            updateAppearancePreview();
+        }
+
+        function selectAppearanceColor(element) {
+            document.querySelectorAll('#buttonColorOptions .color-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            appearanceSettings.primaryColor = element.dataset.color;
+            document.getElementById('customColor').value = element.dataset.color;
+            document.getElementById('customColorHex').value = element.dataset.color;
+            updateAppearancePreview();
+        }
+
+        function setAppearanceCustomColor(value) {
+            if (value.match(/^#[0-9A-Fa-f]{6}$/)) {
+                appearanceSettings.primaryColor = value;
+                document.getElementById('customColor').value = value;
+                document.getElementById('customColorHex').value = value;
+                document.querySelectorAll('#buttonColorOptions .color-option').forEach(el => el.classList.remove('selected'));
+                updateAppearancePreview();
+            }
+        }
+
+        function selectAppearanceButtonStyle(element) {
+            document.querySelectorAll('.button-style-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            appearanceSettings.buttonStyle = element.dataset.style;
+            updateAppearancePreview();
+        }
+
+        function selectAppearanceFont(element) {
+            document.querySelectorAll('.font-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            appearanceSettings.font = element.dataset.font;
+            updateAppearancePreview();
+        }
+
+        function selectAppearanceBioColor(element) {
+            document.querySelectorAll('#bioColorOptions .color-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            appearanceSettings.bioColor = element.dataset.color;
+            document.getElementById('bioColor').value = appearanceSettings.bioColor;
+            document.getElementById('bioColorHex').value = appearanceSettings.bioColor;
+            updateAppearancePreview();
+        }
+
+        function setAppearanceBioColor(value) {
+            if (value.match(/^#[0-9A-Fa-f]{6}$/)) {
+                appearanceSettings.bioColor = value;
+                document.getElementById('bioColor').value = value;
+                document.getElementById('bioColorHex').value = value;
+                document.querySelectorAll('#bioColorOptions .color-option').forEach(el => el.classList.remove('selected'));
+                updateAppearancePreview();
+            }
+        }
+
+        function updateAppearancePreview() {
+            const previewBg = document.getElementById('previewBackground');
+            if (previewBg) {
+                previewBg.style.background = appearanceThemeBackgrounds[appearanceSettings.theme];
+            }
+
+            const iframe = document.getElementById('previewIframe');
+            try {
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                iframeDoc.body.style.background = appearanceThemeBackgrounds[appearanceSettings.theme];
+                iframeDoc.documentElement.style.setProperty('--primary', appearanceSettings.primaryColor);
+                iframeDoc.documentElement.style.setProperty('--primary-dark', adjustColor(appearanceSettings.primaryColor, -20));
+                iframeDoc.body.style.fontFamily = appearanceSettings.font + ', sans-serif';
+
+                const nameEl = iframeDoc.querySelector('.profile-name');
+                if (nameEl) {
+                    nameEl.style.color = appearanceSettings.bioColor;
+                }
+
+                const handleEl = iframeDoc.querySelector('.profile-handle');
+                if (handleEl) {
+                    handleEl.style.color = appearanceSettings.bioColor;
+                }
+
+                const bioEl = iframeDoc.querySelector('.profile-bio');
+                if (bioEl) {
+                    bioEl.style.color = appearanceSettings.bioColor;
+                }
+
+                const buttons = iframeDoc.querySelectorAll('.btn-buy, .btn-checkout');
+                buttons.forEach(btn => {
+                    switch (appearanceSettings.buttonStyle) {
+                        case 'pill':
+                            btn.style.borderRadius = '9999px';
+                            break;
+                        case 'square':
+                            btn.style.borderRadius = '0';
+                            break;
+                        default:
+                            btn.style.borderRadius = '0.5rem';
+                    }
+                });
+            } catch (e) {
+                console.log('Cannot access iframe content');
+            }
+        }
+
+        function adjustColor(hex, percent) {
+            const num = parseInt(hex.replace('#', ''), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = (num >> 16) + amt;
+            const G = (num >> 8 & 0x00FF) + amt;
+            const B = (num & 0x0000FF) + amt;
+            return '#' + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 +
+                (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 +
+                (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
+        }
+
+        function saveAppearanceSettings() {
+            localStorage.setItem('wemint_appearance', JSON.stringify(appearanceSettings));
+
+            const btn = event && event.target ? event.target : null;
+            if (btn) {
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✅ Saved!';
+                btn.style.background = 'var(--accent)';
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                }, 2000);
+            }
+
+            const iframe = document.getElementById('previewIframe');
+            if (iframe) {
+                iframe.src = 'index.html';
+            }
+        }
+
+        // ========================================
+        // Profile & Social Settings
+        // ========================================
+
+        let profileSettings = {
+            displayName: 'Creative Studio',
+            username: 'creativestudio',
+            bio: 'Digital creator & designer. Sharing templates, presets, and design resources.',
+            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=creative',
+            socials: {
+                instagram: { enabled: true, url: 'https://instagram.com/creativestudio' },
+                tiktok: { enabled: true, url: 'https://tiktok.com/@creativestudio' },
+                youtube: { enabled: true, url: 'https://youtube.com/@creativestudio' },
+                twitter: { enabled: false, url: '' },
+                facebook: { enabled: false, url: '' },
+                linkedin: { enabled: false, url: '' },
+                website: { enabled: false, url: '' },
+                email: { enabled: false, url: '' }
+            }
+        };
+
+        function loadProfileSettings() {
+            const saved = localStorage.getItem('wemint_profile');
+            if (saved) {
+                profileSettings = JSON.parse(saved);
+            }
+            applyProfileSettingsToUI();
+            updateCharCount();
+        }
+
+        function applyProfileSettingsToUI() {
+            document.getElementById('displayName').value = profileSettings.displayName;
+            document.getElementById('username').value = profileSettings.username;
+            document.getElementById('bio').value = profileSettings.bio;
+            document.getElementById('avatarPreview').src = profileSettings.avatar;
+            document.getElementById('urlPreview').textContent = `wemint.app/@${profileSettings.username}`;
+
+            renderSocialLinksRow();
+            updateProfilePreview();
+        }
+
+        function handleAvatarUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profileSettings.avatar = e.target.result;
+                    document.getElementById('avatarPreview').src = e.target.result;
+                    updateProfilePreview();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function removeAvatar() {
+            profileSettings.avatar = 'https://api.dicebear.com/7.x/avataaars/svg?seed=' + profileSettings.username;
+            document.getElementById('avatarPreview').src = profileSettings.avatar;
+            updateProfilePreview();
+        }
+
+        function updateUsername() {
+            const username = document.getElementById('username').value.toLowerCase().replace(/[^a-z0-9_]/g, '');
+            document.getElementById('username').value = username;
+            profileSettings.username = username;
+            document.getElementById('urlPreview').textContent = `wemint.app/@${username}`;
+            updateProfilePreview();
+        }
+
+        function updateCharCount() {
+            const bio = document.getElementById('bio').value;
+            document.getElementById('charCount').textContent = bio.length;
+            profileSettings.bio = bio;
+        }
+
+        function updateProfilePreview() {
+            profileSettings.displayName = document.getElementById('displayName').value;
+            profileSettings.bio = document.getElementById('bio').value;
+
+            const iframe = document.getElementById('previewIframe');
+            try {
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+                const nameEl = iframeDoc.querySelector('.profile-name');
+                if (nameEl) nameEl.textContent = profileSettings.displayName;
+
+                const handleEl = iframeDoc.querySelector('.profile-handle');
+                if (handleEl) handleEl.textContent = '@' + profileSettings.username;
+
+                const bioEl = iframeDoc.querySelector('.profile-bio');
+                if (bioEl) bioEl.textContent = profileSettings.bio;
+
+                const avatarEl = iframeDoc.querySelector('.profile-avatar img');
+                if (avatarEl) avatarEl.src = profileSettings.avatar;
+
+                const socialLinks = iframeDoc.querySelector('.social-links');
+                if (socialLinks) {
+                    const icons = socialLinks.querySelectorAll('.social-icon');
+                    icons.forEach((icon, index) => {
+                        const socials = ['instagram', 'tiktok', 'youtube'];
+                        if (socials[index] && profileSettings.socials[socials[index]]) {
+                            icon.style.display = profileSettings.socials[socials[index]].enabled ? 'flex' : 'none';
+                        }
+                    });
+                }
+            } catch (e) {
+                console.log('Cannot access iframe content');
+            }
+        }
+
+        function saveProfileSettings() {
+            profileSettings.displayName = document.getElementById('displayName').value;
+            profileSettings.username = document.getElementById('username').value;
+            profileSettings.bio = document.getElementById('bio').value;
+
+            localStorage.setItem('wemint_profile', JSON.stringify(profileSettings));
+
+            const btn = event && event.target ? event.target : null;
+            if (btn) {
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✅ Saved!';
+                btn.style.background = 'var(--accent)';
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                }, 2000);
+            }
+
+            const iframe = document.getElementById('previewIframe');
+            if (iframe) {
+                iframe.src = 'index.html';
+            }
+        }
+
+        const socialPlatforms = [
+            { key: 'instagram', label: 'Instagram', icon: '📸', placeholder: 'https://instagram.com/username' },
+            { key: 'tiktok', label: 'TikTok', icon: '🎵', placeholder: 'https://tiktok.com/@username' },
+            { key: 'youtube', label: 'YouTube', icon: '📺', placeholder: 'https://youtube.com/@channel' },
+            { key: 'twitter', label: 'X (Twitter)', icon: '🐦', placeholder: 'https://x.com/username' },
+            { key: 'facebook', label: 'Facebook', icon: '📘', placeholder: 'https://facebook.com/page' },
+            { key: 'linkedin', label: 'LinkedIn', icon: '💼', placeholder: 'https://linkedin.com/in/username' },
+            { key: 'website', label: 'Website', icon: '🌐', placeholder: 'https://yourwebsite.com' },
+            { key: 'email', label: 'Email', icon: '✉️', placeholder: 'hello@example.com' }
+        ];
+
+        let activeSocialKey = 'instagram';
+
+        function renderSocialLinksRow() {
+            const row = document.getElementById('socialLinksRow');
+            if (!row) return;
+
+            row.innerHTML = socialPlatforms.map(platform => {
+                const data = profileSettings.socials[platform.key];
+                const isActive = data && data.enabled;
+                const hasUrl = data && data.url;
+                const stateClass = isActive ? 'active' : 'inactive';
+                const title = hasUrl ? `${platform.label}: ${data.url}` : `${platform.label}: not set`;
+                return `
+                    <button class="social-icon-pill ${stateClass}" onclick="openSocialLinkModal('${platform.key}')" title="${title}">
+                        <span class="social-icon">${platform.icon}</span>
+                        <span class="social-plus">+</span>
+                    </button>
+                `;
+            }).join('') + `
+                <button class="social-icon-pill add" onclick="openSocialLinkModal()" title="Add social link">
+                    <span class="social-icon">+</span>
+                </button>
+            `;
+        }
+
+        function openSocialLinkModal(key) {
+            const modal = document.getElementById('socialLinkModal');
+            if (!modal) return;
+            if (key) activeSocialKey = key;
+
+            const select = document.getElementById('socialPlatformSelect');
+            const urlInput = document.getElementById('socialUrlInput');
+            const enabledToggle = document.getElementById('socialEnabledToggle');
+
+            select.value = activeSocialKey;
+            const data = profileSettings.socials[activeSocialKey];
+            const platform = socialPlatforms.find(p => p.key === activeSocialKey);
+
+            urlInput.value = (data && data.url) ? data.url : '';
+            urlInput.placeholder = platform ? platform.placeholder : 'https://...';
+            enabledToggle.checked = data ? !!data.enabled : true;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSocialLinkModal() {
+            const modal = document.getElementById('socialLinkModal');
+            if (!modal) return;
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleSocialPlatformChange(value) {
+            activeSocialKey = value;
+            const data = profileSettings.socials[activeSocialKey];
+            const platform = socialPlatforms.find(p => p.key === activeSocialKey);
+            const urlInput = document.getElementById('socialUrlInput');
+            const enabledToggle = document.getElementById('socialEnabledToggle');
+            if (urlInput) {
+                urlInput.placeholder = platform ? platform.placeholder : 'https://...';
+                urlInput.value = data && data.url ? data.url : '';
+            }
+            if (enabledToggle) {
+                enabledToggle.checked = data ? !!data.enabled : true;
+            }
+        }
+
+        function saveSocialLink(event) {
+            event.preventDefault();
+            const key = document.getElementById('socialPlatformSelect').value;
+            const url = document.getElementById('socialUrlInput').value.trim();
+            const enabled = document.getElementById('socialEnabledToggle').checked;
+
+            profileSettings.socials[key] = {
+                enabled: enabled && url.length > 0,
+                url: url
+            };
+
+            activeSocialKey = key;
+            localStorage.setItem('wemint_profile', JSON.stringify(profileSettings));
+
+            renderSocialLinksRow();
+            updateProfilePreview();
+            closeSocialLinkModal();
+        }
+
         // Dashboard-specific functions
         function copyBioLink() {
             navigator.clipboard.writeText('https://wemint.app/@creativestudio');
@@ -1296,13 +2168,13 @@
             document.body.style.overflow = '';
         }
 
-        function openWithdrawModal() {
-            document.getElementById('withdrawModal').classList.add('active');
+        function openPaymentModal() {
+            document.getElementById('paymentModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeWithdrawModal() {
-            document.getElementById('withdrawModal').classList.remove('active');
+        function closePaymentModal() {
+            document.getElementById('paymentModal').classList.remove('active');
             document.body.style.overflow = '';
         }
 
@@ -1312,10 +2184,10 @@
             closeAddProductModal();
         }
 
-        function handleWithdraw(event) {
+        function handlePaymentSave(event) {
             event.preventDefault();
-            alert('Withdrawal request submitted! (Demo)');
-            closeWithdrawModal();
+            alert('Payment details saved! (Demo)');
+            closePaymentModal();
         }
 
         function viewProductStats(productId) {
@@ -1331,10 +2203,10 @@
             });
         });
 
-        // Initialize withdraw method selection
-        document.querySelectorAll('#withdrawModal .payment-option').forEach(option => {
+        // Initialize payment method selection
+        document.querySelectorAll('#paymentModal .payment-option').forEach(option => {
             option.addEventListener('click', function() {
-                document.querySelectorAll('#withdrawModal .payment-option').forEach(o => o.classList.remove('selected'));
+                document.querySelectorAll('#paymentModal .payment-option').forEach(o => o.classList.remove('selected'));
                 this.classList.add('selected');
                 this.querySelector('input').checked = true;
             });
@@ -1469,6 +2341,19 @@
                 alert(`✅ "${affiliate.name}" deleted! (Demo mode)`);
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAppearanceSettings();
+            loadProfileSettings();
+
+            const iframe = document.getElementById('previewIframe');
+            if (iframe) {
+                iframe.addEventListener('load', function() {
+                    updateAppearancePreview();
+                    updateProfilePreview();
+                });
+            }
+        });
 
         // Initialize affiliate status selection
         document.querySelectorAll('#addAffiliateModal .payment-option').forEach(option => {

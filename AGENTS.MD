@@ -2,7 +2,7 @@
 
 ## Product Overview
 
-**wemint.app** is a bio-native monetization platform that turns a single bio link into a pay-ready creator hub. It combines tipping (Mint), link‑in‑bio, affiliate carts, and a lightweight digital storefront into one conversion‑optimized page.
+**wemint.app** is a bio-native monetization platform that turns a single bio link into a pay‑ready creator portfolio. It combines tipping (Mint), link‑in‑bio, affiliate carts, and a lightweight digital storefront into one conversion‑optimized page.
 
 ### Core Thesis
 
@@ -52,8 +52,9 @@ A single bio link where supporters can:
 ### Payments‑First + Conversion‑First
 
 - **Bio-native checkout** — Designed to maximize completion, not just page customization
-- **Wallet‑first** — Crypto wallet as the primary option, bank details as fallback
+- **Direct‑to‑creator payments** — Wallet‑first (crypto wallet primary, bank details fallback)
 - **Low fees** — Optimized for small-ticket digital goods / micro-transactions
+- **0% fee on donations** — When paid in USDC/USDT (no platform cost)
 - **Instant settlement** — Direct to creator wallet/bank (wemint does not hold funds)
 - **Trust & clarity** — License summaries, receipts, secure downloads, instant delivery
 

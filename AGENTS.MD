@@ -2,7 +2,7 @@
 
 ## Product Overview
 
-**wemint.app** is a bio-native monetization platform that turns a single bio link into a pay‑ready creator portfolio. It combines tipping (Mint), link‑in‑bio, affiliate carts, and a lightweight digital storefront into one conversion‑optimized page.
+**wemint.app** is a bio-native monetization platform that turns a single bio link into a pay‑ready creator portfolio. We believe a bio + portfolio should express the creator’s identity, taste, and brand, so wemint.app strongly supports that layer. It combines tipping (Mint), link‑in‑bio, affiliate carts, and a lightweight digital storefront into one conversion‑optimized page.
 
 ### Core Thesis
 

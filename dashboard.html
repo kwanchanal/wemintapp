@@ -276,6 +276,8 @@
 
         .sidebar-logo {
             color: #ffffff;
+            font-size: 1rem;
+            font-weight: 600;
         }
 
         .page-title {
@@ -533,7 +535,16 @@
         }
 
         .mint-setup-card .card-header {
-            background: #eef0ff;
+            background: #4f46e5;
+        }
+
+        .mint-setup-card .card-header .card-title,
+        .mint-setup-card .card-header p {
+            color: #ffffff !important;
+        }
+
+        .mint-setup-card .card-header .card-title {
+            font-size: 1rem;
         }
 
         .mint-setup-grid {
@@ -799,7 +810,7 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-logo">
-                <span>💎</span> wemint.app
+                wemint.app
             </div>
 
             <nav class="sidebar-nav">
@@ -2220,11 +2231,11 @@
 
         const defaultAppearanceSettings = {
             theme: 'purple-gradient',
-            primaryColor: '#6366f1',
+            primaryColor: '#22c55e',
             buttonStyle: 'rounded',
             font: 'Google Sans',
             bioColor: '#ffffff',
-            cardShape: 'rounded'
+            cardShape: 'ticket'
         };
 
         let appearanceSettings = { ...defaultAppearanceSettings };
@@ -2361,6 +2372,7 @@
             try {
                 const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
                 iframeDoc.body.style.background = appearanceThemeBackgrounds[appearanceSettings.theme];
+                iframeDoc.documentElement.style.setProperty('--theme-bg', appearanceThemeBackgrounds[appearanceSettings.theme]);
                 iframeDoc.documentElement.style.setProperty('--primary', appearanceSettings.primaryColor);
                 iframeDoc.documentElement.style.setProperty('--primary-dark', adjustColor(appearanceSettings.primaryColor, -20));
                 iframeDoc.body.style.fontFamily = appearanceSettings.font + ', sans-serif';
@@ -2537,6 +2549,9 @@
 
                 const avatarEl = iframeDoc.querySelector('.profile-avatar img');
                 if (avatarEl) avatarEl.src = profileSettings.avatar;
+
+                const ticketAvatarEl = iframeDoc.querySelector('.ticket-avatar-hero img');
+                if (ticketAvatarEl) ticketAvatarEl.src = profileSettings.avatar;
 
                 const socialLinks = iframeDoc.querySelector('.social-links');
                 if (socialLinks) {

@@ -278,11 +278,12 @@ section {
 
 .card-shape-ticket .ticket-pass {
     display: block;
-    background: #ffffff;
+    background: var(--theme-bg, #6b6bd6);
     overflow: visible;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     position: relative;
     border: none;
+    z-index: 1;
     --r: 10px;
     --s: 28px;
     -webkit-mask:
@@ -293,6 +294,10 @@ section {
         radial-gradient(var(--r) at var(--r) 100%, transparent 99%, #000) calc(var(--s) / -2) 100% / var(--s) 51% repeat-x;
 }
 
+.ticket-wrap {
+    position: relative;
+}
+
 /* Hide the span-based scallops */
 .ticket-scallop-top,
 .ticket-scallop-bottom {
@@ -300,9 +305,12 @@ section {
 }
 
 .ticket-header {
-    background: var(--primary);
-    padding: 1.25rem;
-    padding-top: 1.5rem;
+    background-color: var(--primary);
+    background-image: radial-gradient(circle at 14px 0, transparent 12px, var(--primary) 13px);
+    background-size: 28px 16px;
+    background-repeat: repeat-x;
+    background-position: top left;
+    padding: 2.3rem 1.25rem 1.25rem;
     color: #ffffff;
     position: relative;
 }
@@ -312,6 +320,36 @@ section {
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 1rem;
+}
+
+.card-shape-ticket .ticket-header-top {
+    display: none;
+}
+
+.ticket-hero {
+    position: absolute;
+    top: 3.4rem;
+    right: calc(1.25rem + 5px);
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.ticket-avatar-hero {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #ffffff;
+    background: #ffffff;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+.ticket-avatar-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .ticket-brand {
@@ -358,6 +396,10 @@ section {
     flex-shrink: 0;
 }
 
+.card-shape-ticket .ticket-avatar {
+    display: none;
+}
+
 .ticket-avatar img {
     width: 100%;
     height: 100%;
@@ -367,6 +409,7 @@ section {
 .ticket-info {
     flex: 1;
     min-width: 0;
+    padding-right: 6.5rem;
 }
 
 .ticket-name {
@@ -389,7 +432,7 @@ section {
     margin-top: 0.375rem;
     line-height: 1.4;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }

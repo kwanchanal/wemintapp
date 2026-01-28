@@ -12,6 +12,7 @@
 
 > **Payment is the product—not just the page.**
 > You get paid directly and instantly to your own wallet or bank. wemint.app never holds funds.
+> Bio + portfolio express identity and taste; monetization should reinforce that brand, not replace it.
 
 ---
 
@@ -77,7 +78,7 @@ A single bio link where supporters can:
 
 ### Supporter Value Proposition
 
-> One click from social → Mint/support → optional message + email → instant delivery (if any), with clear licensing to reduce hesitation.
+> One click from social → Mint/support → optional message + email → instant delivery (if any), with clear licensing to reduce hesitation — all in a branded creator space.
 
 ---
 
@@ -109,6 +110,7 @@ When building features, prioritize:
 3. **Instant gratification** — Downloads and confirmations must be immediate
 4. **Trust signals** — Licensing, receipts, and security must be visible
 5. **Global-first** — Assume cross-border; don't assume specific payment methods
+6. **Identity-first** — Bio + portfolio should elevate creator taste and brand
 
 ---
 
@@ -303,6 +305,11 @@ Settings are stored in `localStorage`:
 
 - **Font**: Inter (Google Fonts)
 - **Weights**: 400, 500, 600, 700
+
+### Visual Direction
+
+- **Identity-first** — Encourage creators to signal taste, style, and brand at a glance
+- **Soft commerce** — Payments feel native to the bio, not a separate marketplace
 
 ### Components
 

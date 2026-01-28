@@ -126,8 +126,8 @@ const defaultQuickLinks = [
 // ========================================
 
 const defaultSectionVisibility = {
-    affiliate: true,
-    products: true,
+    affiliate: false,
+    products: false,
     links: true,
     mint: true
 };
@@ -168,10 +168,26 @@ function initSectionToggles() {
     const linksToggle = document.getElementById('toggleLinks');
     const mintToggle = document.getElementById('toggleMint');
 
-    if (affiliateToggle) affiliateToggle.checked = !!visibility.affiliate;
-    if (productsToggle) productsToggle.checked = !!visibility.products;
+    // Lock affiliate + products off by default.
+    visibility.affiliate = false;
+    visibility.products = false;
+    saveSectionVisibility(visibility);
+
+    if (affiliateToggle) {
+        affiliateToggle.checked = false;
+        affiliateToggle.disabled = true;
+        affiliateToggle.title = 'This section is hidden for now';
+    }
+    if (productsToggle) {
+        productsToggle.checked = false;
+        productsToggle.disabled = true;
+        productsToggle.title = 'This section is hidden for now';
+    }
+
     if (linksToggle) linksToggle.checked = !!visibility.links;
     if (mintToggle) mintToggle.checked = !!visibility.mint;
+
+    applySectionVisibility();
 }
 
 function toggleSectionVisibility(key, checkbox) {
@@ -966,7 +982,7 @@ function updateDashboardStats() {
     const totalRevenue = products.reduce((sum, p) => sum + (p.price * (p.sales || 0)), 0);
 
     const revenueEl = document.querySelector('.stat-value');
-    if (revenueEl && revenueEl.parentElement.querySelector('.stat-label')?.textContent === 'Total Revenue') {
+    if (revenueEl && revenueEl.parentElement.querySelector('.stat-label')?.textContent === 'Total Mint') {
         revenueEl.textContent = `$${totalRevenue.toLocaleString()}`;
     }
 }

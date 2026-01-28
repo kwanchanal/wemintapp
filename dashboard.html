@@ -283,6 +283,11 @@
         .page-title {
             font-size: 1.6rem;
             letter-spacing: -0.01em;
+            margin: 0;
+        }
+
+        .page-header {
+            margin-top: -0.35rem;
         }
 
         .stat-card {
@@ -290,6 +295,18 @@
             border: 2px solid #111111;
             box-shadow: none;
             border-radius: 14px;
+        }
+
+        .stat-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .stat-icon {
+            color: #111111;
+            font-size: 18px;
         }
 
         .dashboard-card {
@@ -435,9 +452,13 @@
         }
 
         .toggle-switch input {
+            position: absolute;
+            inset: 0;
             opacity: 0;
-            width: 0;
-            height: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            cursor: pointer;
         }
 
         .toggle-slider {
@@ -526,7 +547,7 @@
         }
 
         .preview-section .stats-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 0.75rem;
         }
 
@@ -834,18 +855,6 @@
                     <span class="icon material-symbols-outlined">account_circle</span>
                     <span>Profile</span>
                 </a>
-                <a href="#quickLinksSection" class="nav-item" data-target="quickLinksSection">
-                    <span class="icon material-symbols-outlined">link</span>
-                    <span>Showcase</span>
-                </a>
-                <a href="#affiliateLinksSection" class="nav-item" data-target="affiliateLinksSection">
-                    <span class="icon material-symbols-outlined">shopping_bag</span>
-                    <span>Affiliate Links</span>
-                </a>
-                <a href="#productsTable" class="nav-item" data-target="productsTable">
-                    <span class="icon material-symbols-outlined">storefront</span>
-                    <span>Your Shop</span>
-                </a>
             </nav>
         </aside>
 
@@ -871,7 +880,7 @@
                     <div class="card-body">
                         <div class="mint-setup-grid" style="margin-bottom: 1rem;">
                             <div class="mint-setup-option">
-                                <div class="option-title">🪪 Payout Wallet</div>
+                                <div class="option-title">Payout Wallet</div>
                                 <div class="option-desc">Supporters can pay in USDC or USDT. You receive directly to this address.</div>
                                 <small>Supported: Solana, Polygon, Base, Tron, Ethereum, BSC</small>
                                 <div style="display: grid; gap: 0.6rem;">
@@ -904,7 +913,7 @@
                                 </button>
                             </div>
                             <div class="mint-setup-option">
-                                <div class="option-title">🏦 Payout Bank</div>
+                                <div class="option-title">Payout Bank</div>
                                 <div class="option-desc">Optional fallback if a supporter can't use wallet.</div>
                                 <small>Choose your bank country</small>
                                 <div style="display: grid; gap: 0.6rem;">
@@ -1131,7 +1140,6 @@
                 <div class="section-divider identity">
                     <span class="section-divider-badge">SHOW WHO YOU ARE</span>
                 </div>
-                <div class="section-divider-copy">Express identity, build your brief portfolio and get monetize</div>
             </div>
 
             <div class="dashboard-card is-collapsed" id="appearanceSection" data-accordion>
@@ -1394,10 +1402,10 @@
             </div>
 
             <!-- Quick Links Section -->
-            <div class="dashboard-card is-collapsed" id="quickLinksSection" data-accordion>
+            <div class="dashboard-card" id="quickLinksSection" data-accordion>
                 <div class="card-header">
                     <div>
-                        <h2 class="card-title">Your Showcase</h2>
+                        <h2 class="card-title">Your Links</h2>
                         <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.25rem;">Add links that show on your bio page</p>
                     </div>
                     <div style="display: flex; gap: 0.75rem; align-items: center;">
@@ -1428,14 +1436,6 @@
                         <tbody id="linksTableBody"></tbody>
                     </table>
                 </div>
-            </div>
-
-            <!-- More Ways to Earn -->
-            <div>
-                <div class="section-divider">
-                    <span class="section-divider-badge">More ways to earn</span>
-                </div>
-                <div class="section-divider-copy">Offering your product Affiliate Link or Set up your Digital Shop</div>
             </div>
 
             <!-- Affiliate Links Section -->
@@ -1662,53 +1662,12 @@
                 </div>
             </div>
 
-            <!-- Recent Sales -->
-            <div class="dashboard-card is-collapsed" data-accordion>
-                <div class="card-header">
-                    <h2 class="card-title">Recent Sales</h2>
-                    <a href="#" style="color: var(--primary); font-size: 0.875rem; font-weight: 500;">View All →</a>
-                </div>
-                <div class="card-body accordion-body">
-                    <div class="sales-list">
-                        <div class="sale-item" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--border-color);">
-                            <div>
-                                <p style="font-weight: 500; color: var(--text-primary);">Instagram Templates Pack</p>
-                                <p style="font-size: 0.8125rem; color: var(--text-muted);">john@example.com • 2 minutes ago</p>
-                            </div>
-                            <span style="font-weight: 600; color: var(--accent);">+$19</span>
-                        </div>
-                        <div class="sale-item" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--border-color);">
-                            <div>
-                                <p style="font-weight: 500; color: var(--text-primary);">Lightroom Presets Bundle</p>
-                                <p style="font-size: 0.8125rem; color: var(--text-muted);">sarah@example.com • 15 minutes ago</p>
-                            </div>
-                            <span style="font-weight: 600; color: var(--accent);">+$29</span>
-                        </div>
-                        <div class="sale-item" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--border-color);">
-                            <div>
-                                <p style="font-weight: 500; color: var(--text-primary);">3D Icon Pack</p>
-                                <p style="font-size: 0.8125rem; color: var(--text-muted);">mike@example.com • 1 hour ago</p>
-                            </div>
-                            <span style="font-weight: 600; color: var(--accent);">+$39</span>
-                        </div>
-                        <div class="sale-item" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;">
-                            <div>
-                                <p style="font-weight: 500; color: var(--text-primary);">Instagram Templates Pack</p>
-                                <p style="font-size: 0.8125rem; color: var(--text-muted);">anna@example.com • 3 hours ago</p>
-                            </div>
-                            <span style="font-weight: 600; color: var(--accent);">+$19</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             </div>
 
             <!-- Right Column - Your Page Preview -->
             <div class="preview-section">
                 <div class="preview-header">
                     <div class="preview-title">
-                        <span>💁🏻‍♀️</span>
                         <span>Your Page</span>
                     </div>
                     <a href="index.html" target="_blank" class="preview-link">
@@ -1752,24 +1711,20 @@
                 <!-- Key Stats under preview -->
                 <div class="stats-grid" style="margin-top: 1rem;">
                     <div class="stat-card">
-                        <p class="stat-label">Total Revenue</p>
+                        <div class="stat-card-header">
+                            <span class="material-symbols-outlined stat-icon">toll</span>
+                            <p class="stat-label">Total Mint</p>
+                        </div>
                         <p class="stat-value">$2,847</p>
                         <p class="stat-change">↑ 12% from last month</p>
                     </div>
                     <div class="stat-card">
-                        <p class="stat-label">Total Sales</p>
-                        <p class="stat-value">142</p>
-                        <p class="stat-change">↑ 8% from last month</p>
-                    </div>
-                    <div class="stat-card">
-                        <p class="stat-label">Page Views</p>
+                        <div class="stat-card-header">
+                            <span class="material-symbols-outlined stat-icon">visibility</span>
+                            <p class="stat-label">Page Views</p>
+                        </div>
                         <p class="stat-value">3,521</p>
                         <p class="stat-change">↑ 24% from last month</p>
-                    </div>
-                    <div class="stat-card">
-                        <p class="stat-label">Conversion Rate</p>
-                        <p class="stat-value">4.03%</p>
-                        <p class="stat-change negative">↓ 2% from last month</p>
                     </div>
                 </div>
             </div>
